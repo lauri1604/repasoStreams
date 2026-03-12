@@ -1,0 +1,4 @@
+Maria,DAM2,true,20
+Antón,DAM2,true,19
+Laura,DAW2,true,20
+Breixo,Ciber,false,23

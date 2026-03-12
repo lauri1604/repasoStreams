@@ -1,0 +1,23 @@
+[
+    {
+      "nombre": "Maria",
+      "curso": "DAM2",
+      "edad": 20
+    },
+    {
+      "nombre": "Antón",
+      "curso": "DAM2",
+      "edad": 19
+    },
+    {
+      "nombre": "Laura",
+      "curso": "DAW2",
+      "edad": 20
+    },
+    {
+      "nombre": "Breixo",
+      "curso": "Ciber",
+      "matricula": false,
+      "edad": 23
+    }
+]
