@@ -23,10 +23,10 @@ public class Main {
         Map<String, List<Integer>> map = list.stream().collect(Collectors.groupingBy(i -> i % 2 == 0 ? "PAR" : "IMPAR"));
         System.out.println(map);
         List<Alumno> alumnos = new ArrayList<>();
-        alumnos.add(new Alumno("María", "DAM2", 20));
-        alumnos.add(new Alumno("Antón", "DAW2", 19));
-        alumnos.add(new Alumno("Laura", "DAM2", 20));
-        alumnos.add(new Alumno("Breixo", "Ciber", false, 21));
+//        alumnos.add(new Alumno("María", "DAM2", 20));
+//        alumnos.add(new Alumno("Antón", "DAW2", 19));
+//        alumnos.add(new Alumno("Laura", "DAM2", 20));
+//        alumnos.add(new Alumno("Breixo", "Ciber", false, 21));
         Map<String, List<String>> map2 = alumnos.stream().collect(Collectors.groupingBy(Alumno::getCurso, Collectors.mapping(Alumno::getNombre, Collectors.toList())));
         System.out.println(map2);
         Map<String, List<Alumno>> map3 = alumnos.stream().collect(Collectors.groupingBy(Alumno::getCurso));
@@ -41,7 +41,13 @@ public class Main {
     }
 
         public static void main(String[] args) {
-            AlumnosStorage alumnos = new AlumnosStorage();
-            alumnos.cargarDatosCSV();
+            AlumnosStorageCSV alumnos = new AlumnosStorageCSV();
+            //alumnos.cargarDatos();
+            alumnos.guardarDatos(List.of(
+                    new Alumno("Homer", "DAM2", 20),
+                    new Alumno("Marge", "DAW2", 19),
+                    new Alumno("Bart", "DAM2", 20),
+                    new Alumno("Lisa", "Ciber", false, 21)
+            ));
         }
     }

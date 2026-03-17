@@ -2,10 +2,9 @@ package org.iesteis;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.List;
 
-public class AlumnosStorage {
+public class AlumnosStorageCSV {
     private Alumno toAlumno(String[] linea) {
         String nombre = linea[0];
         String curso = linea[1];
@@ -14,7 +13,7 @@ public class AlumnosStorage {
         return new Alumno(nombre, curso, matriculado, edad);
     }
 
-    void cargarDatosCSV() {
+    void cargarDatos() {
         try {
             //Opcion 1: obtener Array de Strings
             List<String> list = Files.readAllLines(Path.of("data/alumnos.txt"));
@@ -26,6 +25,17 @@ public class AlumnosStorage {
                     .map(this::toAlumno)//Aquí se obtiene un Stream de Alumnos
                     .toList();
             System.out.println(alumnos);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    void guardarDatos(List<Alumno> alumnos) {
+        try {
+               Path path = Path.of("data/alumnos2.csv");
+               StringBuilder sb = new StringBuilder();
+               sb.append("nombre,curso,matriculado,edad\n");
+                alumnos.forEach(alumno -> sb.append(alumno.toStringCSV()).append("\n"));
+                Files.writeString(path, sb.toString());
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
